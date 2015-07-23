@@ -28,7 +28,7 @@ SECRET_KEY = '#$_w@)-c$xnean-0h1^khd51pby!p+$biuaqwl38k0c-h8xc8+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -110,6 +110,7 @@ USE_TZ = True
 
 #STATIC_URL = ESTATICOS
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, "Sidefi", "templates")]
 
