@@ -1,0 +1,320 @@
+{% extends "Ingreso_base.html" %}
+
+
+{% load staticfiles %}
+
+
+
+{% block contenido %}
+
+<br>
+
+<h4 class="page-header">Tabla de Mediciones</h4>
+
+            
+      </div>
+
+          <h5><b>Centro Educativo: </b> {{ centro }}</h5>
+          <!-- <h5>Medidas actualizadas: {{ poblacioncondatos }} </h5> -->
+          <!-- <h5>Medidas pendientes: {{ poblacionsindatos }} </h5> -->
+
+          <h5><b>Proceso activo: </b> {{ codigovisita }}</h5>
+          <h5><b>Mostrando registros a partir del: </b> {{ fecha_ref }}</h5>
+
+          <br>
+
+          <ol>
+            <li>Para ingresar o modificar la medicion haga clic sobre  <img src="{% static "images/finger6.png"%}" alt="{{ registro.id }}" style="width:25px;height:15px;"/></li>
+            <li>Seleccione "Exportar" para extraer la tabla de mediciones en formato CSV.</li>
+          </ol>  
+
+          <br>
+            <a href='/export_m/'><input type="Button"
+            id="mybutton"
+            name="url button"
+            value="Exportar"  
+            style="height:30px; width:150px"/>
+          </a>
+
+          
+          
+  <!-- demo ==============================================================-->
+  <div id="demo" class="box jplist" style="margin: 20px 0 50px 0">
+  
+    <!-- ios button: show/hide panel -->
+    <div class="jplist-ios-button">
+      <i class="fa fa-sort"></i>
+      jPList Actions
+    </div>
+    
+    <!-- panel -->
+    <div class="jplist-panel box panel-top">            
+             
+      <!--  boton para deshacer ultima accion -->
+      <button 
+        type="button" 
+        data-control-type="back-button" 
+        data-control-name="back-button" 
+        data-control-action="back-button">
+        <i class="fa fa-arrow-left"></i> Deshacer</button>
+                
+      <!-- boton para reiniciar -->
+      <button 
+        type="button" 
+        class="jplist-reset-btn" 
+        data-control-type="reset" 
+        data-control-name="reset" 
+        data-control-action="reset">
+        Iniciar &nbsp;<i class="fa fa-share"></i></button>
+                
+      <!-- registros por pagina -->
+      <div 
+         class="jplist-drop-down" 
+         data-control-type="items-per-page-drop-down" 
+         data-control-name="paging" 
+         data-control-action="paging">
+         <!--<div class="jplist-dd-panel"> 2 por pagina </div>-->
+         
+        <ul style="display: none;">
+         <li class="active"><span data-number="10" data-default="true"> 10 por pagina </span></li>
+         <li><span data-number="20"> 20 por pagina </span></li>
+         <li><span data-number="40"> 40 por pagina </span></li>
+         <li><span data-number="all"> Ver todos </span></li>
+        </ul>
+      </div>
+                
+
+
+      <!-- filtrar por nombre -->
+      <div class="text-filter-box">
+                
+        <i class="fa fa-search  jplist-icon"></i>
+                  
+        <!--[if lt IE 10]>
+        <div class="jplist-label">Filtrar por nombre:</div>
+        <![endif]-->
+                  
+        <input 
+          data-path=".nombre" 
+          type="text" 
+          placeholder="Filtrar por nombre" 
+          data-control-type="textbox" 
+          data-control-name="nombre-filter" 
+          data-control-action="filter"/>
+      </div>
+                
+      <!-- filter por centro -->
+      <div class="text-filter-box">
+                  
+        <i class="fa fa-search  jplist-icon"></i>
+                  
+        <!--[if lt IE 10]>
+        <div class="jplist-label">Filtrar por centro:</div>
+        <![endif]-->
+                  
+        <input 
+          data-path=".centro" 
+          type="text" 
+          placeholder="Filtrar por centro" 
+          data-control-type="textbox" 
+          data-control-name="centro-filter" 
+          data-control-action="filter"
+        />  
+      </div>
+      
+<!-- Contar por genero -->
+      <div class="jplist-group">
+        <ul>
+          <li>
+            <span 
+              data-control-type="button-filter" 
+              data-control-action="filter" 
+              data-control-name="f-btn" 
+              data-path=".F" 
+              data-selected="false">
+                <i class="fa fa-caret-right"></i>
+                Hembras
+            </span>
+
+            <span
+              data-control-type="counter"
+              data-control-action="counter"
+              data-control-name="f-counter"
+              data-format="({count})"
+              data-path=".F"
+              data-mode="filter"
+              data-type="path">
+            </span>
+          </li>
+                    
+          <li>                    
+            <span
+              data-control-type="button-filter"
+              data-control-action="filter"
+              data-control-name="m-btn"
+              data-path=".M">
+                <i class="fa fa-caret-right"></i>
+                Varones
+            </span>
+
+            <span
+              data-control-type="counter"
+              data-control-action="counter"
+              data-control-name="m-counter"
+              data-format="({count})"
+              data-path=".M"
+              data-mode="filter"
+              data-type="path">
+            </span>
+          </li>
+        
+          <li>                    
+            <span
+              data-control-type="button-filter"
+              data-control-action="filter"
+              data-control-name="n-btn"
+              data-path=".None">
+                <i class="fa"></i>
+                Sin actualizar 
+            </span>
+
+            <span
+              data-control-type="counter"
+              data-control-action="counter"
+              data-control-name="m-counter"
+              data-format="({count})"
+              data-path=".None"
+              data-mode="filter"
+              data-type="path"></span>
+          </li>
+          
+        </ul>
+      </div>
+
+
+<!-- fin contar por genero -->
+
+   
+
+      <!-- pagination results -->
+      <div 
+         class="jplist-label" 
+         data-type="Pagina {current} de {pages}" 
+         data-control-type="pagination-info" 
+         data-control-name="paging" 
+         data-control-action="paging">
+      </div>
+                  
+      <!-- pagination control -->
+      <div 
+         class="jplist-pagination" 
+         data-control-type="pagination" 
+         data-control-name="paging" 
+         data-control-action="paging"
+         
+      </div>
+      
+    </div>         
+  
+
+
+    <!-- data ====================================================-->   
+    
+
+    <div class="box text-shadow">
+
+        <table class="demo-tbl"> 
+          <tr>
+            <th>---</th>
+            <th>Nombre</th>
+            <th>Genero</th>
+            <th>Fecha de la medicion</th>
+            <th>Edad registrada</th>
+          </tr>
+
+          {% for registro in datos %}
+        
+          <tr class="tbl-item">
+            
+            <td class="td-block"><a href="/ingreso_visita/{{ registro.id }}">
+              <img src="{% static "images/finger6.png"%}" 
+                alt="{{ registro.id }}" style="width:30px;height:20px;"/></a></td>
+              
+            <!-- <td class="td-block"><p class="id">{{ registro.id }}</p></td> -->
+            <td class="td-block"><p class="nombre">{{ registro.nombre }}</p></td>
+            
+            <td class="td-block"><p class="theme">
+            <span class="{{ registro.genero }}">{{ registro.genero }}</span></p></td>
+
+            <!-- <td class="td-block"><p class="fecha_nac">{{ registro.fecha_nac}}</p></td> -->
+
+            <td class="td-block"><p class="theme">
+            <span class="{{ registro.fecha_visita}}">{{ registro.fecha_visita}}</span></p></td>
+
+            <!-- <td class="td-block"><p class="fecha_visita">{{ registro.fecha_visita}}</p></td> -->
+            
+            <td class="td-block"><p class="centro">{{ registro.edad_medicion }}</p></td>
+          </tr>
+    
+          {% endfor %}
+
+        </table>
+      
+      </div>
+
+    <!-- data ====================================================-->   
+
+
+    <div class="box jplist-no-results text-shadow align-center">
+      <p>No se encontraron resultados</p>
+    </div>
+    
+    <!-- ios button: show/hide panel -->
+    <div class="jplist-ios-button">
+      <i class="fa fa-sort"></i>
+      jPList Actions
+    </div>
+              
+    <!-- panel -->
+    <div class="jplist-panel box panel-bottom">
+                
+      <!-- items per page dropdown -->
+      <div 
+        class="jplist-drop-down" 
+        data-control-type="items-per-page-drop-down" 
+        data-control-name="paging" 
+        data-control-action="paging"
+        data-control-animate-to-top="true">
+                  
+        <ul>
+          <li><span data-number="10" data-default="true"> 10 por pagina </span></li>
+          <li><span data-number="20"> 20 por pagina </span></li>
+          <li><span data-number="40"> 40 per page </span></li>
+          <li><span data-number="all"> Ver todos </span></li>
+        </ul>
+      </div>
+                              
+                
+      <!-- pagination results -->
+      <div 
+        class="jplist-label" 
+        data-type="{start} - {end} de {all}"
+        data-control-type="pagination-info" 
+        data-control-name="paging" 
+        data-control-action="paging">
+      </div>
+                  
+      <!-- pagination -->
+      <div 
+        class="jplist-pagination" 
+        data-control-animate-to-top="true"
+        data-control-type="pagination" 
+        data-control-name="paging" 
+        data-control-action="paging">
+      </div>
+                
+    </div>
+          
+  </div>
+  <!-- end of demo -->
+{% endblock contenido %}

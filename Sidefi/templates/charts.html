@@ -1,0 +1,50 @@
+{% extends "Ingreso_base.html" %}
+
+{% load chartkick %}
+
+{% block contenido %}
+
+
+    <script src="http://www.google.com/jsapi"></script>
+
+    <!-- // <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+    <!-- // <script src="http://code.highcharts.com/highcharts.js"></script> -->
+    <script src="http://ankane.github.io/chartkick/chartkick.js"></script>
+
+<br>
+<h3 class="page-header">Presentacion visual de los Datos</h3>
+
+{% if mensaje %}
+<div class="alert alert-danger" role="alert">
+        <strong>{{ mensaje }}</strong> 
+      </div>
+
+{% else %}
+    <div class="alert alert-info" role="alert">
+       Visualizacion de los datos.
+
+      </div>
+
+{% endif %}
+
+        
+    <div class="alert alert-success" role="alert">
+        <strong><h4>Talla</h4></strong>
+        {% column_chart peso with library={"title":"Poblacion"}%}
+    </div>
+
+    <div class="alert alert-success" role="alert">
+        <strong><h4>Peso</h4></strong>
+        {% column_chart peso with library={"title":"Poblacion"}%}
+    </div>
+        
+    <div class="alert alert-success" role="alert">
+        <strong><h4>Indice de Masa Corporal</h4></strong>
+        {% column_chart peso with library={"title":"Poblacion"}%}
+    </div>
+
+
+
+      
+
+{% endblock contenido %}

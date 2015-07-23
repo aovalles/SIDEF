@@ -1,0 +1,224 @@
+{% extends "Ingreso_base.html" %}
+
+
+
+{% block contenido %}
+
+<br>
+
+<h3 class="page-header">Mediciones</h3>
+
+
+{% if mensaje %}
+<div class="alert alert-danger" role="alert">
+        <strong>Se produjo un error.</strong> {{ mensaje }}<br>
+        La edad debe estar comprendida entre {{datos.edadminima}} y {{datos.edadmaxima}} meses.
+      </div>
+
+{% else %}
+    <div class="alert alert-info" role="alert">
+       Introduzca los datos y presione Guardar. Para cancelar simplemente salga de esta pagina.
+      </div>
+
+{% endif %}
+
+{% if mensaje2 %}
+<div class="alert alert-warning" role="alert">
+        <strong>Advertencia: </strong> {{ mensaje2 }}<br>
+      </div>
+{% endif %}
+
+
+
+<form action="" method="POST">{% csrf_token%}
+
+
+     <table class="table table-striped">
+
+    <tbody>
+                              
+      <tr>
+        <th><label for="id_codigo">Codigo de la visita:</label></th>
+        <td><input readonly type="text" id="id_codigo" name="codigo" 
+         value="{{datos.procesonombre}}"></td>
+      </tr>
+
+      
+      <tr>
+        <th><label for="id_individuo">Nombre:</label></th>
+        <td><input size ="35" readonly type="text" id="id_individuo" name="individuo" 
+          value="{{datos.nombre}}"></td>
+      </tr>
+
+
+      <tr>
+        <th><label for="id_edad">Edad (meses):</label></th><td>
+        <input readonly type="text" id="id_edad" name="edad" type="number" 
+          value="{{datos.edad}}" /></td>
+      </tr>
+
+      
+      <tr>
+        <th><label for="id_pesoVisita">Peso (Kilogramos):</label></th><td>
+        <input oninput="calculate()" id="pesoVisita" name="pesoVisita" step="0.1" type="number" value="{{datos.pesoregistrado}}" /></td>
+      
+      </tr>
+
+      <tr>
+        <th><label for="id_alturaVisita">Altura (centimetros):</label></th><td>
+        <input oninput="calculate()" id="alturaVisita" name="alturaVisita" step="0.1" type="number" value="{{datos.alturaregistrada}}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_imcVisita">Indice de masa corporal<br> (IMC):</label></th><td>
+        <input readonly id="imcVisita" name="imcVisita" step="0.1" type="number" value="{{datos.imcregistrado}}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_pesoReferencia">Peso de referencia:</label></th>
+        <td>
+           <table border="0" width=60%>
+               <tr>
+                <th>-3DE</th>
+                <th>-2DE</th>
+                <th>-1DE</th>
+                <th>Normal</th>
+                <th>1DE</th>
+                <th>2DE</th>
+                <th>3DE</th>
+              </tr>
+               <tr>
+                  <td>{{datos.p1}}</td>
+                  <td>{{datos.p2}}</td>
+                  <td>{{datos.p3}}</td>
+                  <td>{{datos.p4}}</td>
+                  <td>{{datos.p5}}</td>
+                  <td>{{datos.p6}}</td>
+                  <td>{{datos.p7}}</td>
+                </tr>
+            </table>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_alturaReferencia">Altura de referencia:</label></th>
+        <td>   
+              <table border="0" width=60%>
+              <tr>
+                <th>-3DE</th>
+                <th>-2DE</th>
+                <th>-1DE</th>
+                <th>Normal</th>
+                <th>1DE</th>
+                <th>2DE</th>
+                <th>3DE</th>
+              </tr>
+               <tr>
+                  <td>{{datos.a1}}</td>
+                  <td>{{datos.a2}}</td>
+                  <td>{{datos.a3}}</td>
+                  <td>{{datos.a4}}</td>
+                  <td>{{datos.a5}}</td>
+                  <td>{{datos.a6}}</td>
+                  <td>{{datos.a7}}</td>
+                </tr>
+
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_imcReferencia">IMC de referencia:</label></th>
+        <td>
+              <table border="0" width=60%>
+              <tr>
+                <th>-3DE</th>
+                <th>-2DE</th>
+                <th>-1DE</th>
+                <th>Normal</th>
+                <th>1DE</th>
+                <th>2DE</th>
+                <th>3DE</th>
+              </tr>
+               <tr>
+                  <td>{{datos.i1}}</td>
+                  <td>{{datos.i2}}</td>
+                  <td>{{datos.i3}}</td>
+                  <td>{{datos.i4}}</td>
+                  <td>{{datos.i5}}</td>
+                  <td>{{datos.i6}}</td>
+                  <td>{{datos.i7}}</td>
+                </tr>
+          </table>
+
+        </td>
+          
+      </tr>
+
+          </tbody>
+        </table>
+
+
+<style>
+#zscore {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 35%;
+    border-collapse: collapse;
+}
+
+#zscore td, #zscore th {
+    font-size: 1.5em;
+    border: 1px solid #5F9EA0;
+    padding: 3px 7px 2px 7px;
+    text-align: center;
+}
+
+#zscore th {
+    font-size: 1.5em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #8FBBBC;
+    color: #ffffff;
+    text-align: center;
+}
+
+#zscore tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+</style>
+
+  <table id="zscore">
+    <tr><th>Medida</th><th>Z-Score</th><th>Valoraci&oacute;n</th></tr>
+    <tr>
+      <td>Peso</td>
+      <td>{{datos.zpeso}}</td>
+      <td>{{datos.zpeso}}</td>
+    </tr>
+    <tr>
+      <td>Altura</td>
+      <td>{{datos.zaltura}}</td>
+      <td>{{datos.zaltura}}</td>
+    </tr>
+    <tr>
+      <td>IMC</td>
+      <td>{{datos.zimc}}</td>
+      <td>{{datos.zimc}}</td>
+    </tr>
+
+  </table>
+<br>
+    <input type="submit" value="Guardar datos de visita" style="height:30px; width:150px">
+
+  </form>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+{% endblock contenido %}

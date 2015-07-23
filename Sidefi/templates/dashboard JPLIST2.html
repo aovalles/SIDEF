@@ -1,0 +1,299 @@
+
+{% extends "Ingreso_base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block entidad %}<p>Inicio</p>{% endblock entidad %}
+
+{% block contenido %}
+
+
+	
+		<!-- top bar -->
+		<div id="black-top-bar" class="box">
+			<div class="center">			
+				<div class="box">
+
+					<!-- left menu -->
+					<ul id="black-top-bar-left-menu" class="hmenu left iphone-hidden">
+						<li class="glow">
+							<a title="" href="https://github.com/no81no/jplist/issues?state=open">
+								<i class="fa fa-asterisk"></i> Request a feature / <i class="fa fa-bug"></i> Report a bug
+							</a>
+						</li>
+					</ul>
+
+					<!-- social menu -->
+					<ul id="social-menu" class="hmenu right">
+						<li class="glow"><a title="" href="https://www.facebook.com/jplist"><i class="fa fa-facebook"></i>&nbsp;</a></li>
+						<li class="glow"><a rel="publisher" title="" href="https://plus.google.com/+Jplistjs"><i class="fa fa-google-plus"></i></a></li>	
+						<li class="glow"><a title="" href="https://twitter.com/jquery_jplist"><i class="fa fa-twitter"></i></a></li>					
+						<li class="glow"><a title="" href="https://github.com/no81no/jplist"><i class="fa fa-github"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+				
+		<!-- header -->
+		<header id="header" class="box">
+			<div id="header-box" class="box">
+				<div class="center">			
+					<div class="box">
+
+						<!-- logo -->
+						<div class="left" id="logo">	
+                            <img title="jPList - jQuery Data Grid Controls" alt="jPList - jQuery Data Grid Controls" src="dashboard_files/rocket.png">
+							<a title="" href="http://jplist.com/">jPList - jQuery Data Grid Controls</a>
+						</div>
+
+					</div>
+				</div>					
+			</div>
+		</header>
+		
+		<!-- bread crumbs -->
+		<div class="box" id="bread-crumbs-box">
+			<div class="box" id="bread-crumbs">			
+				<div class="center"><div class="box text-shadow"><p></p></div></div>
+			</div>
+		</div>
+		
+		<!-- page title -->
+		<div class="box product-page-title p-tb-20">
+			<div class="center">
+				
+				<div class="box text-shadow">
+					<h1 class="h1-30-normal left reset-pm">
+	Counter Control</h1>
+				</div>	
+
+			</div>
+		</div>
+		
+		<!-- main content -->
+		<div class="box">
+			<div class="center">
+				<!--<><><><><><><><><><><><><><><><><><><><><><><><><><> DEMO START <><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+				
+				
+			
+	<!-- demo -->
+	<div id="demo" class="box jplist" style="margin: 20px 0 50px 0">
+	
+		<!-- ios button: show/hide panel -->
+		<div class="jplist-ios-button">
+			<i class="fa fa-sort"></i>
+			jPList Actions
+		</div>
+		
+		<!-- panel -->
+		<div class="jplist-panel box panel-top">						
+								
+			<!-- back button button -->
+			<button class="" type="button" data-control-type="back-button" data-control-name="back-button" data-control-action="back-button">
+				<i class="fa fa-arrow-left"></i> Go Back
+			</button>
+								
+			<!-- reset button -->
+			<button type="button" class="jplist-reset-btn" data-control-type="reset" data-control-name="reset" data-control-action="reset">
+				Reset &nbsp;<i class="fa fa-share"></i>
+			</button>
+								
+			<!-- items per page dropdown -->
+			<div class="jplist-drop-down" data-control-type="items-per-page-drop-down" data-control-name="paging" data-control-action="paging"><div class="jplist-dd-panel"> 10 per page </div>
+			   
+			   <ul style="display: none;">
+				 <li class=""><span data-number="3"> 3 per page </span></li>
+				 <li><span data-number="5"> 5 per page </span></li>
+				 <li class="active"><span data-number="10" data-default="true"> 10 per page </span></li>
+				 <li><span data-number="all"> View All </span></li>
+			   </ul>
+			</div>
+								
+			<!-- sort dropdown -->
+			<div class="jplist-drop-down" data-control-type="sort-drop-down" data-control-name="sort" data-control-action="sort" data-datetime-format="{month}/{day}/{year}"><div class="jplist-dd-panel">Likes asc</div> <!-- {year}, {month}, {day}, {hour}, {min}, {sec} -->
+									
+				<ul style="display: none;">
+					<li class=""><span data-path="default">Sort by</span></li>
+					<li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+					<li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+					<li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+					<li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+					<li class="active"><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+					<li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+					<li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+					<li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+				</ul>
+			</div>
+
+			<!-- filter by title -->
+			<div class="text-filter-box">
+								
+				<i class="fa fa-search  jplist-icon"></i>
+									
+				<!--[if lt IE 10]>
+				<div class="jplist-label">Filter by Title:</div>
+				<![endif]-->
+									
+				<input data-path=".title" placeholder="Filter by Title" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" type="text">
+			</div>
+								
+			<!-- filter by description -->
+			<div class="text-filter-box">
+									
+				<i class="fa fa-search  jplist-icon"></i>
+									
+				<!--[if lt IE 10]>
+				<div class="jplist-label">Filter by Description:</div>
+				<![endif]-->
+									
+				<input data-path=".desc" placeholder="Filter by Description" data-control-type="textbox" data-control-name="desc-filter" data-control-action="filter" type="text">	
+			</div>
+			
+			<div class="jplist-group">
+				<ul>
+					<li>
+						<span class="jplist-selected" data-control-type="button-filter" data-control-action="filter" data-control-name="architecture-btn" data-path=".architecture" data-selected="true">
+								<i class="fa fa-caret-right"></i>
+								Architecture
+						</span>
+
+						<span data-control-type="counter" data-control-action="counter" data-control-name="architecture-counter" data-format="({count})" data-path=".architecture" data-mode="filter" data-type="path">(<span data-type="count-value">6</span>)</span>
+					</li>
+										
+					<li>										
+						<span data-control-type="button-filter" data-control-action="filter" data-control-name="christmas-btn" data-path=".christmas">
+								<i class="fa fa-caret-right"></i>
+								Christmas
+						</span>
+
+						<span class="" data-control-type="counter" data-control-action="counter" data-control-name="christmas-counter" data-format="({count})" data-path=".christmas" data-mode="filter" data-type="path">(<span data-type="count-value">1</span>)</span>
+					</li>
+										
+					<li>
+						<span data-control-type="button-filter" data-control-action="filter" data-control-name="nature-btn" data-path=".nature">
+								<i class="fa fa-caret-right"></i>
+								Nature
+						</span>
+
+						<span class="" data-control-type="counter" data-control-action="counter" data-control-name="nature-counter" data-format="({count})" data-path=".nature" data-mode="filter" data-type="path">(<span data-type="count-value">1</span>)</span>
+					</li>
+										
+					<li>
+						<span data-control-type="button-filter" data-control-action="filter" data-control-name="lifestyle-btn" data-path=".lifestyle">
+								<i class="fa fa-caret-right"></i>
+								Lifestyle
+						</span>
+
+						<span class="" data-control-type="counter" data-control-action="counter" data-control-name="lifestyle-counter" data-format="({count})" data-path=".lifestyle" data-mode="filter" data-type="path">(<span data-type="count-value">1</span>)</span>
+					</li>
+				</ul>
+			</div>
+								
+			<!-- pagination results -->
+			<div class="jplist-label" data-type="Page {current} of {pages}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging">Page 1 of 1</div>
+									
+			<!-- pagination control -->
+			<div class="jplist-pagination jplist-one-page" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="5"><div class="jplist-pagingprev jplist-hidden" data-type="pagingprev"><button type="button" class="jplist-first" data-number="0" data-type="first">«</button><button data-number="0" type="button" class="jplist-prev" data-type="prev">‹</button></div><div class="jplist-pagingmid" data-type="pagingmid"><div class="jplist-pagesbox" data-type="pagesbox"><button type="button" data-type="page" class="jplist-current" data-active="true" data-number="0">1</button> </div></div><div class="jplist-pagingnext jplist-hidden" data-type="pagingnext"><button data-number="0" type="button" class="jplist-next" data-type="next">›</button><button data-number="0" type="button" class="jplist-last" data-type="last">»</button></div></div>
+			
+		</div>				 
+
+		<div class="list box text-shadow">
+		
+		<div class="list-item box">		
+
+		<!-- data ===================================================-->   
+
+		{% for registro in datos %}
+
+		<!-- img -->
+		<div class="img left">
+		<img src="dashboard_files/arch-1.jpg" alt="" title="">
+		</div>
+
+        <div class="block right">
+          <p class="id">{{ registro.id }}</p>
+          <p class="nombre">{{ registro.nombre }}</p>
+          <p class="genero">{{ registro.genero }}</p>
+          <p class="fecha_nac">{{ registro.fecha_nac}}</p>
+          <p class="fecha_visita">{{ registro.fecha_visita}}</p>
+          <p class="centro">{{ centro }}
+          <p class="theme">
+          <span class="architecture">Architecture</span>
+          </p>
+        </div>
+        {% endfor %}
+		
+
+		<!-- DATA ==================================================-->	
+
+
+
+		<div class="box jplist-no-results text-shadow align-center jplist-hidden">
+			<p>No results found</p>
+		</div>
+		
+		<!-- ios button: show/hide panel -->
+		<div class="jplist-ios-button">
+			<i class="fa fa-sort"></i>
+			jPList Actions
+		</div>
+							
+		<!-- panel -->
+		<div class="jplist-panel box panel-bottom">
+								
+			<!-- items per page dropdown -->
+			<div class="jplist-drop-down" data-control-type="items-per-page-drop-down" data-control-name="paging" data-control-action="paging" data-control-animate-to-top="true"><div class="jplist-dd-panel"> 10 per page </div>
+									
+				<ul style="display: none;">
+					<li class=""><span data-number="3"> 3 per page </span></li>
+					<li><span data-number="5"> 5 per page </span></li>
+					<li class="active"><span data-number="10" data-default="true"> 10 per page </span></li>
+					<li><span data-number="all"> View All </span></li>
+				</ul>
+			</div>
+															
+			<!-- sort dropdown -->
+			<div class="jplist-drop-down" data-control-type="sort-drop-down" data-control-name="sort" data-control-action="sort" data-control-animate-to-top="true" data-datetime-format="{month}/{day}/{year}"><div class="jplist-dd-panel">Likes asc</div> <!-- {year}, {month}, {day}, {hour}, {min}, {sec} -->
+									
+				<ul style="display: none;">
+					<li class=""><span data-path="default">Sort by</span></li>
+					<li><span data-path=".title" data-order="asc" data-type="text">Title A-Z</span></li>
+					<li><span data-path=".title" data-order="desc" data-type="text">Title Z-A</span></li>
+					<li><span data-path=".desc" data-order="asc" data-type="text">Description A-Z</span></li>
+					<li><span data-path=".desc" data-order="desc" data-type="text">Description Z-A</span></li>
+					<li class="active"><span data-path=".like" data-order="asc" data-type="number" data-default="true">Likes asc</span></li>
+					<li><span data-path=".like" data-order="desc" data-type="number">Likes desc</span></li>
+					<li><span data-path=".date" data-order="asc" data-type="datetime">Date asc</span></li>
+					<li><span data-path=".date" data-order="desc" data-type="datetime">Date desc</span></li>
+				</ul>
+			</div>
+								
+			<!-- pagination results -->
+			<div class="jplist-label" data-type="{start} - {end} of {all}" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging">1 - 6 of 6</div>
+									
+			<!-- pagination -->
+			<div class="jplist-pagination jplist-one-page" data-control-animate-to-top="true" data-control-type="pagination" data-control-name="paging" data-control-action="paging"><div class="jplist-pagingprev jplist-hidden" data-type="pagingprev"><button type="button" class="jplist-first" data-number="0" data-type="first">«</button><button data-number="0" type="button" class="jplist-prev" data-type="prev">‹</button></div><div class="jplist-pagingmid" data-type="pagingmid"><div class="jplist-pagesbox" data-type="pagesbox"><button type="button" data-type="page" class="jplist-current" data-active="true" data-number="0">1</button> </div></div><div class="jplist-pagingnext jplist-hidden" data-type="pagingnext"><button data-number="0" type="button" class="jplist-next" data-type="next">›</button><button data-number="0" type="button" class="jplist-last" data-type="last">»</button></div></div>
+								
+		</div>
+					
+	</div>
+	<!-- end of demo -->
+				<!--<><><><><><><><><><><><><><><><><><><><><><><><><><> DEMO END <><><><><><><><><><><><><><><><><><><><><><><><><><>-->				
+			</div>		
+		</div>	
+		
+		<!-- footer -->
+		<footer class="box" id="footer">
+			<div class="center">			
+                <div class="box">
+					<p id="footer-content" class="align-center glow">
+						<a href="http://jplist.com/" title="">Copyright © 2014  <b>jPList Software</b></a>
+					</p>					
+				</div>
+			</div>
+		</footer>	
+    
+{% endblock contenido %}

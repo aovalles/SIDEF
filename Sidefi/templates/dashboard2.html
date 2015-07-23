@@ -1,0 +1,84 @@
+{% extends "Ingreso_base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block entidad %}<p>Inicio</p>{% endblock entidad %}
+
+{% block contenido %}
+
+
+
+<h3 class="page-header">Escritorio de SIDEF</h3>
+
+ <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/blue.jpg" %}" data-src="{% static "images/blue.jpg" %}" class="img-responsive" alt="200x200">
+              <h4>Estudiantes:</h4>
+              <span class="text-muted">{{ poblaciontotal }}</span><br>
+              <a href='/dashboard/2/'>
+            <input type="Button" id="mybutton" name="url button" value="Ver" />
+          </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/purple.jpg" %}" data-src="" class="img-responsive" alt="200x200">
+              <h4>Medidas actualizadas:</h4>
+              <span class="text-muted">{{ poblacioncondatos }}</span><br>
+              <a href='/dashboard/2/'>
+            <input type="Button" id="mybutton" name="url button" value="Ver" />
+          </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/red.jpg" %}" data-src="{% static "images/blue.jpg" %}" class="img-responsive" alt="200x200">
+              <h4>Medidas pendientes:</h4>
+              <span class="text-muted">{{ poblacionsindatos }}</span><br>
+              <a href='/dashboard/2/'>
+            <input type="Button" id="mybutton" name="url button" value="Ver" />
+          </a>
+            </div>
+            
+          </div>
+
+          <h5><b>Centro Educativo: </b> {{ centro }}</h5>
+          <h5><b>Proceso activo: </b> {{ codigovisita }}</h5>
+          <h5><b>Mostrando registros a partir del: </b> {{ fecha_ref }}</h5>
+
+          <br>
+          
+          <a href='/dashboard/2/'>
+            <input type="Button" id="mybutton" name="url button" value="Actualizar los datos" />
+          </a>
+
+          <h2 class="sub-header"></h2>
+          <div class="table-responsive">
+
+            <table id="mytable" class="tablesorter-blue">
+              <thead>
+                <tr>
+                  
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Genero</th>
+                  <th>Fecha de Nac.</th>
+                  <th>Fecha Visita</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for registro in datos %}
+                <tr>
+                  <td> {{ registro.id }}
+                  <td>{{ registro.nombre }}</td>
+                  <td>{{ registro.genero }}</td>
+                  <td>{{ registro.fecha_nac }}</td>
+                  <td>{{ registro.fecha_visita}}</td>
+                <tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+          </div>
+
+{% endblock contenido %}

@@ -1,0 +1,97 @@
+{% extends "Ingreso_base.html" %}
+
+
+{% load staticfiles %}
+
+
+
+{% block contenido %}
+
+<br>
+
+<h3 class="page-header">Escritorio de SIDEF</h3>
+
+<p>
+<b>B</b>ienvenido al escritorio de SIDEF para el centro educativo <b>{{centro}}</b>.
+El proceso de toma de mediciones que actualmente est&aacute; activo es <b>{{codigovisita}}</b>, iniciado el <b>{{fecha_ref}}.</b> Para este proceso las edades consideradas deben estar entre {{edadminima}} y {{edadmaxima}} meses.</p>
+
+
+ <br>
+
+ <div class="row" align="center">
+
+            <div align="center" class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/estudiantes1.jpg" %}" data-src="" class="img-responsive" alt="">
+              <h2><a href="/estudiantes">Tabla de estudiantes</a></h2>
+              
+            </div>
+            <div align="center" class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/medicion1.jpg" %}"
+              data-src="" class="img-responsive" alt="">
+              <h2><a href="/mediciones/">Tabla de mediciones</a></h2>
+              
+            </div>
+            <div align="center" class="col-xs-6 col-sm-3 placeholder">
+              <img data-holder-rendered="true" src="{% static "images/histograma.png"%}"
+              data-src="" class="img-responsive" alt="">
+              <h2><a href="/charts/">Informe</a></h2>
+              
+            </div>
+  
+</div>
+<br>
+
+<style>
+#zscore {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#zscore td, #zscore th {
+    font-size: 1.5em;
+    border: 1px solid #5F9EA0;
+    padding: 3px 7px 2px 7px;
+    text-align: center;
+}
+
+#zscore th {
+    font-size: 1.4em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #8FBBBC;
+    color: #191947;
+    text-align: center;
+}
+
+#zscore tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+</style>
+
+
+  <table id="zscore" width="100%">
+
+    <tr><th>Poblacion Estudiantil</th><th>Mediciones Realizadas</th><th>Mediciones Pendientes</th><th>Progreso</th></tr>
+    <tr>
+      <td>{{poblaciontotal}}</td>
+      <td>{{poblacioncondatos}}</td>
+      <td>{{poblacionsindatos}}</td>
+      <td>{{progreso}}</td>
+    </tr>
+    
+  </table>
+
+
+<br>
+
+
+<br>
+
+<br>
+
+<br>
+
+{% endblock contenido %}

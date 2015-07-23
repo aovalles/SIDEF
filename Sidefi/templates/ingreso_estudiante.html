@@ -1,0 +1,58 @@
+{% extends "Ingreso_base.html" %}
+
+
+
+{% block contenido %}
+<br>
+<h3 class="page-header">Visualizacion de los Datos</h3>
+
+{% if mensaje %}
+<div class="alert alert-danger" role="alert">
+        <strong>{{ mensaje }}</strong> 
+      </div>
+
+{% else %}
+    <div class="alert alert-info" role="alert">
+       Los siguientes graficos son representacines de los indicarores basicos.
+      </div>
+
+{% endif %}
+
+
+<form action="" method="POST">{% csrf_token%}
+
+<table class="table table-striped">
+	<tbody>
+    	<tr><th><label for="id_nombre">Nombre:</label></th>
+    	<td><input id="id_nombre" maxlength="30" size="35" 
+    	name="nombre_estudiante" type="text" value="{{ datos.nombre_estudiante }}"></td></tr>
+
+		<tr><th><label for="id_genero">Genero:</label></th><td>
+		<select id="id_genero" name="genero">
+			<option value="{{ datos.genero }}" selected="selected">{{ datos.genero }}</option>
+			<option value="M">M</option>
+			<option value="F">F</option>
+			</select></td></tr>
+
+		<tr><th><label for="fecha_nac">Fecha Nac.:</label></th><td>
+		<input id="fecha_nac" name="fecha_nac" value="{{ datos.fecha_nac }}" type="text" /></td></tr>
+
+		<tr><th><label for="id_activo">Activo:</label></th><td>
+		<select id="id_activo" name="activo">
+			<option value="{{ datos.activo }}" selected="selected">{{ datos.activo }}</option>
+			<option value="N">N</option>
+			<option value="S">S</option>
+			</select></td></tr>
+
+		<tr><th><label for="id_centro">Centro:</label></th><td>{{centro}}</td></tr>
+
+     </tbody>
+ </table>
+
+
+ <input type="submit" value="Guardar Estudiante" style="height:30px; width:150px">
+
+ </form>
+
+
+{% endblock contenido %}
