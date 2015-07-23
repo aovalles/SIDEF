@@ -1,1 +1,1 @@
-web: gunicorn Sidefi.wsgi
+web: gunicorn Sitioweb.wsgi
