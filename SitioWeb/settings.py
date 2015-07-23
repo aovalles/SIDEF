@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'SitioWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sidefi_db',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
+        'NAME': 'dbdgp1lp7ogivq',
+        'USER': 'oigpnatjcxcphb',
+        'PASSWORD': '8FHuNiceSoyqfQoitpr2D_WIzO',
+        'HOST': 'ec2-54-83-55-214.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
