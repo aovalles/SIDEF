@@ -25,7 +25,7 @@ class RegionalAdmin(admin.ModelAdmin):
 
 
 class CentroAdmin(admin.ModelAdmin): 
-    list_display = ('nombre', 'distrito', 'direccion', 'telefono', 'encargado')
+    list_display = ('nombre', 'direccion', 'telefono')
     search_fields = ('nombre',) 
     list_filter = ('distrito',) 
 
