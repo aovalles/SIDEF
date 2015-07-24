@@ -128,7 +128,12 @@ def vistaDashboard(request):
     
     contexto["poblacionsindatos"] = poblacionActiva - poblacioncondatos
 
-    progreso = round((float(poblacioncondatos)/poblacionActiva)*100)
+    try:
+        progreso = round((float(poblacioncondatos)/poblacionActiva)*100)
+    except:
+        progreso = 0
+        
+    
     progreso = str(int(progreso)) + "%"
     contexto["progreso"] = progreso
 
