@@ -276,7 +276,7 @@ class Parametros(models.Model):
         return '%s' % (self.codigo)
 
     def activo(self):
-        if estatus == "I":
+        if self.estatus == "I":
             return True
         else:
             return False
