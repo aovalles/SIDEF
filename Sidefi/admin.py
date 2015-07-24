@@ -55,7 +55,7 @@ class IMCAdmin(admin.ModelAdmin):
 
 
 class ParametroAdmin(admin.ModelAdmin):
-    list_display = ('codigo', 'descripcion', 'fecha_ref', 'estatus')
+    list_display = ('codigo', 'descripcion', 'fecha_ref', 'activo')
 
 
 class VisitaAdmin(admin.ModelAdmin):

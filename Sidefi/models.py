@@ -51,7 +51,9 @@ class Centro(models.Model):
         verbose_name_plural = "Centros" 
  
     def __unicode__(self):
-        return '%s - %s' %(self.nombre, self.distrito) 
+        return '%s - %s' %(self.nombre, self.distrito)
+
+
 
 
 class Individuo(models.Model):
@@ -272,3 +274,12 @@ class Parametros(models.Model):
     
     def __unicode__(self):
         return '%s' % (self.codigo)
+
+    def activo(self):
+        if estatus == "I":
+            return True
+        else:
+            return False
+
+    activo.boolean = True
+    activo.short_description = "Proceso activo"
