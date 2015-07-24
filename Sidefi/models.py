@@ -40,7 +40,7 @@ class Distrito(models.Model):
         
 
 class Centro(models.Model):
-    nombre = models.CharField(max_length=30)
+    nombre = models.CharField(max_length=50)
     distrito = models.ForeignKey('Distrito')
     direccion = models.CharField(max_length=60, blank=True)
     telefono = models.CharField(max_length=11, blank=True)
