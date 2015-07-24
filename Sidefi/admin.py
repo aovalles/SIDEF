@@ -73,7 +73,7 @@ admin.site.register(Visita, VisitaAdmin)
 admin.site.register(Altura, AlturaAdmin)
 admin.site.register(Peso)
 admin.site.register(IMC)
-admin.site.register(Parametros)
+admin.site.register(Parametros, ParametroAdmin)
 #admin.site.register(UserProfile, UserProfileAdmin)
 
 # Registrar el nuevo modelo UserAdmin
