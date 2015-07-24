@@ -132,7 +132,7 @@ def vistaDashboard(request):
         progreso = round((float(poblacioncondatos)/poblacionActiva)*100)
     except:
         progreso = 0
-        
+
     
     progreso = str(int(progreso)) + "%"
     contexto["progreso"] = progreso
@@ -344,7 +344,7 @@ def vistaMediciones(request):
 
     #Fecha de referencia, inicio de la toma de medidas
     #Los estudiantes solo tendran un registro despues de esta fecha
-    fecha_ref = Parametros.objects.get(pk=2).fecha_ref
+    fecha_ref = Parametros.objects.get(estatus="I").fecha_ref
 
     #Variable de contexto   
     contexto = Context(
