@@ -24,7 +24,7 @@ class Regional(models.Model):
 class Distrito(models.Model):
     nombre = models.CharField(max_length=30)
     regional = models.ForeignKey('Regional')
-    encargado = models.ManyToManyField('UserProfile')
+    #encargado = models.ManyToManyField('UserProfile')
     direccion = models.CharField(max_length=60, blank=True)
     telefono = models.CharField(max_length=11, blank=True)
 
