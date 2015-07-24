@@ -21,7 +21,7 @@ def signin (request):
     
     # Si el usuario ya esta autenticado, muestra su pagina principal
     if request.user.is_authenticated():
-        return redirect("http://localhost:8000/dashboard/")
+        return redirect("http://sidefi.herokuapp.com/dashboard/")
 
     if request.method == "POST":
         username = request.POST.get('username','')
@@ -44,7 +44,7 @@ def signin (request):
             micentro = Centro.objects.filter(encargado=request.user.id)
             
             request.session["MiCentroId"] = micentro[0].id
-            return redirect("http://localhost:8000/dashboard/")
+            return redirect("http://sidefi.herokuapp.com/dashboard/")
             ## Que hacer si no tiene centro asignado
             
         

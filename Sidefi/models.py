@@ -263,7 +263,7 @@ class Parametros(models.Model):
     
     visita_opciones = (('C', 'Completa'),('I', 'Incompleta'),)
 
-    fecha_ref = models.DateField()  #Fecha a tomar en cuenta como inicio de registro de medidas
+    fecha_ref = models.DateField(verbose_name='Fecha de Inicio')  #Fecha a tomar en cuenta como inicio de registro de medidas
     codigo = models.CharField(max_length=10)
     descripcion = models.CharField(max_length=1000)
     estatus = models.CharField(max_length=1, choices=visita_opciones)
