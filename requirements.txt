@@ -1,4 +1,4 @@
--e /home/aovalles/DjangoDev/packages/chartkick
+git+https://github.com/mher/chartkick.py.git
 dj-database-url==0.3.0
 dj-static==0.0.6
 Django==1.8
