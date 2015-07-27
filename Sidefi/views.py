@@ -78,7 +78,7 @@ def vistaDashboard(request):
     # Comprobar que el usuario esta autenticado
 
     if not request.user.is_authenticated():
-        return render(request, "signin.html")
+        return redirect("http://sidefi.herokuapp.com/signin")
 
 
     micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -158,7 +158,7 @@ def IngresoEstudiante(request, identificador):
     try:
 
         if not request.user.is_authenticated():
-            return render(request, "signin.html")
+            return redirect("http://sidefi.herokuapp.com/signin")
         
         micentro = Centro.objects.get(id=request.session["MiCentroId"])
 
@@ -266,7 +266,7 @@ def vistaEstudiantes(request):
         # Comprobar que el usuario esta autenticado
 
         if not request.user.is_authenticated():
-            return render(request, "signin.html")
+            return redirect("http://sidefi.herokuapp.com/signin")
 
 
         micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -337,7 +337,7 @@ def vistaMediciones(request):
     # Comprobar que el usuario esta autenticado
 
     if not request.user.is_authenticated():
-        return render(request, "signin.html")
+        return redirect("http://sidefi.herokuapp.com/signin")
 
 
     micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -422,7 +422,7 @@ def IngresoVisita(request, identificador):
     
     
     if not request.user.is_authenticated():
-        return render(request, "signin.html")
+        return redirect("http://sidefi.herokuapp.com/signin")
 
     formDict = dict()  # Diccionario para almacenar los datos del formulario
     
@@ -866,7 +866,7 @@ def charts(request):
     # Comprobar que el usuario esta autenticado
 
     if not request.user.is_authenticated():
-        return render(request, "signin.html")
+        return redirect("http://sidefi.herokuapp.com/signin")
 
 
     micentro = Centro.objects.get(id=request.session["MiCentroId"])
