@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.template import Context, Template
 from django.template.context_processors import csrf
-from Sidefi.forms import IngresarEstudiante, IngresarVisita, LoginForm
+from Sidefi.forms import IngresarEstudiante, IngresarVisita, CaptchaForm
 from django.forms.models import modelformset_factory
 from django.utils.six.moves import range
 from django.http import StreamingHttpResponse
@@ -15,6 +15,65 @@ import csv
 
 
 def signin (request):
+
+    contexto = Context({"mensaje": ""})
+
+    captcha = CaptchaForm(request.POST)
+    contexto['captcha'] = captcha  
+    contexto.update(csrf(request))
+
+    if request.method == "POST":
+        username = request.POST.get('username','')
+        password = request.POST.get('password','')
+
+        #Crear un objeto user si el usuario es autenticado correctamente
+        user = auth.authenticate(username=username, password=password)
+
+
+        if user is not None and user.is_active:
+
+            if captcha.is_valid():
+
+                #Hacer el login
+                auth.login(request, user)
+            
+                # Guardar la escuela asignada al usuario
+                micentro = Centro.objects.filter(encargado=request.user.id)
+                
+                request.session["MiCentroId"] = micentro[0].id
+                return redirect("http://sidefi.herokuapp.com/principal", contexto)
+            else:
+                contexto = Context({"mensaje": "Captcha incorrecto"})
+                return redirect("http://sidefi.herokuapp.com/", contexto)
+            
+        else:
+
+            contexto = Context({"mensaje": "Vuelva a intentarlo"})
+            contexto['captcha'] = captcha
+            return render_to_response("signin.html", contexto)
+    else:
+
+        # captcha = CaptchaForm()
+        # contexto['captcha'] = captcha
+        return render_to_response("signin.html", contexto)
+
+
+
+def logout (request):
+    auth.logout(request)
+    return HttpResponseRedirect("/")
+
+
+def principal(request):
+    return render(request, "principal.html")
+
+
+
+
+#===============================================================================================
+
+
+def signin2 (request):
 
     contexto = Context({"mensaje": ""})
     contexto.update(csrf(request))
@@ -75,10 +134,10 @@ def principal(request):
 
 def vistaDashboard(request):
 
-    # Comprobar que el usuario esta autenticado
+    # # Comprobar que el usuario esta autenticado
 
-    if not request.user.is_authenticated():
-        return redirect("http://sidefi.herokuapp.com/signin")
+    # if not request.user.is_authenticated():
+    #     return redirect("http://sidefi.herokuapp.com/signin")
 
 
     micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -157,8 +216,8 @@ def IngresoEstudiante(request, identificador):
 
     try:
 
-        if not request.user.is_authenticated():
-            return redirect("http://sidefi.herokuapp.com/signin")
+        # if not request.user.is_authenticated():
+        #     return redirect("http://sidefi.herokuapp.com/signin")
         
         micentro = Centro.objects.get(id=request.session["MiCentroId"])
 
@@ -265,8 +324,8 @@ def vistaEstudiantes(request):
 
         # Comprobar que el usuario esta autenticado
 
-        if not request.user.is_authenticated():
-            return redirect("http://sidefi.herokuapp.com/signin")
+        # if not request.user.is_authenticated():
+        #     return redirect("http://sidefi.herokuapp.com/signin")
 
 
         micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -336,8 +395,8 @@ def vistaMediciones(request):
 
     # Comprobar que el usuario esta autenticado
 
-    if not request.user.is_authenticated():
-        return redirect("http://sidefi.herokuapp.com/signin")
+    # if not request.user.is_authenticated():
+    #     return redirect("http://sidefi.herokuapp.com/signin")
 
 
     micentro = Centro.objects.get(id=request.session["MiCentroId"])
@@ -421,8 +480,8 @@ def vistaMediciones(request):
 def IngresoVisita(request, identificador):
     
     
-    if not request.user.is_authenticated():
-        return redirect("http://sidefi.herokuapp.com/signin")
+    # if not request.user.is_authenticated():
+    #     return redirect("http://sidefi.herokuapp.com/signin")
 
     formDict = dict()  # Diccionario para almacenar los datos del formulario
     

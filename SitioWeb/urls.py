@@ -13,12 +13,12 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^SitioWeb/', include(SitioWeb.urls)),
     
-    url (r'^signin/', 'Sidefi.views.signin', name="signin"), 
+    # url (r'^signin/', 'Sidefi.views.signin', name="signin"), 
     
     url (r'^logout/', 'Sidefi.views.logout', name="logout"), 
 
-    
-    url (r'^$', 'Sidefi.views.principal', name="principal"), 
+    url (r'^$', 'Sidefi.views.signin'), 
+
     url (r'^principal/$', 'Sidefi.views.principal'), 
 
 
@@ -35,13 +35,15 @@ urlpatterns = [
 
     url (r'^ingreso_visita/(\d+)/$', 'Sidefi.views.IngresoVisita'), 
 
-
     # Exportar a archivos CSV
     url (r'^export_e/$', 'Sidefi.views.exportar_estudiantes'), 
     url (r'^export_m/$', 'Sidefi.views.exportar_visitas'), 
 
-
-
     url(r'^charts/$', 'Sidefi.views.charts', name='charts'),
     
 ]
+
+urlpatterns += patterns('',
+    url(r'^captcha/', include('captcha.urls')),
+)
+

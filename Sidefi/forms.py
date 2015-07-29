@@ -1,12 +1,17 @@
 from django import forms
 from Sidefi.models import Individuo, Visita
+from captcha.fields import CaptchaField
 
 
-class LoginForm(forms.Form):
+class CaptchaForm(forms.Form):
+    captcha = CaptchaField()
 
-	nombreusuario = forms.CharField(max_length = 50)
-	password = forms.CharField(max_length = 20,
-		widget = forms.TextInput(attrs = {'type' : ' password'}))
+
+# class LoginForm(forms.Form):
+
+# 	nombreusuario = forms.CharField(max_length = 50)
+# 	password = forms.CharField(max_length = 20,
+# 		widget = forms.TextInput(attrs = {'type' : ' password'}))
 
 
 class IngresarEstudiante(forms.ModelForm):
