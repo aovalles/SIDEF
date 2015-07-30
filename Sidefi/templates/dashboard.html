@@ -9,7 +9,7 @@
 
 <br>
 
-<h3 class="page-header">Escritorio de SIDEF</h3>
+<h3 class="page-header">Escritorio de SIDEFI</h3>
 
 <p>
 <b>B</b>ienvenido al escritorio de SIDEF para el centro educativo <b>{{centro}}</b>.
@@ -47,49 +47,56 @@ El proceso de toma de mediciones que actualmente est&aacute; activo es <b>{{codi
 </div>
 <br>
 
-<style>
-#zscore {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 80%;
-    border-collapse: collapse;
-}
 
-#zscore td, #zscore th {
-    font-size: 1.5em;
-    border: 1px solid #5F9EA0;
-    padding: 3px 7px 2px 7px;
-    text-align: center;
-}
+<div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Poblacion Estudiantil</h3>
+            </div>
+            <div class="panel-body">
+              {{poblaciontotal}}
+            </div>
+          </div>
+          </div>
 
-#zscore th {
-    font-size: 1.4em;
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 4px;
-    background-color: #8FBBBC;
-    color: #191947;
-    text-align: center;
-}
+          <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Mediciones Realizadas</h3>
+            </div>
+            <div class="panel-body">
+              {{poblacioncondatos}}
+            </div>
+          </div>
+          </div>
 
-#zscore tr.alt td {
-    color: #000000;
-    background-color: #EAF2D3;
-}
-</style>
+          <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Mediciones Pendientes</h3>
+            </div>
+            <div class="panel-body">
+              {{poblacionsindatos}}
+            </div>
+          </div>
+          </div>
 
-<div class="table-responsive">
-  <table class="table table-striped">
+                    <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Progreso</h3>
+            </div>
+            <div class="panel-body">
+              {{progreso}}
+            </div>
+          </div>
+          </div>
+          
 
-    <tr><th>Poblacion Estudiantil</th><th>Mediciones Realizadas</th><th>Mediciones Pendientes</th><th>Progreso</th></tr>
-    <tr>
-      <td>{{poblaciontotal}}</td>
-      <td>{{poblacioncondatos}}</td>
-      <td>{{poblacionsindatos}}</td>
-      <td>{{progreso}}</td>
-    </tr>
-    
-  </table>
 </div>
+
+
 
 <br>
 <br>
