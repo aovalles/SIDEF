@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^SitioWeb/', include(SitioWeb.urls)),
     
-    (r'^signin/', 'Sidefi.views.signin', name="signin"), 
+    url (r'^signin/', 'Sidefi.views.signin', name="signin"), 
     
     url (r'^logout/', 'Sidefi.views.logout', name="logout"), 
 
