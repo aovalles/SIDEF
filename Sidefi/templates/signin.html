@@ -45,12 +45,6 @@
 
     <div class="container">
 
-      {% if mensaje %}
-      <div class="alert alert-danger" role="alert">
-            <strong>{{ mensaje }}</strong> 
-      </div>
-      {% endif %}
-
       <form action="" method="post" class="form-signin"> {% csrf_token %}
         <h3 class="form-signin-heading">Por favor, ident&iacute;fiquese:</h3>
         <br>
@@ -68,6 +62,13 @@
         <br>
 
       </form>
+
+       {% if mensaje %}
+      <div class="alert alert-danger" role="alert">
+            <strong>{{ mensaje }}</strong> 
+      </div>
+      {% endif %}
+      
 
     </div> <!-- /container -->
 
