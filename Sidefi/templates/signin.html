@@ -59,16 +59,17 @@
         <br><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 
-        <br>
-
-      {% if mensaje %}
-      <div class="alert alert-danger" role="alert"><strong>{{ mensaje }}</strong> 
-      </div>
-      {% endif %}
-      
+        <br>      
 
       </form>
 
+      <div class="container">
+
+        {% if mensaje %}
+        <div class="alert alert-danger" role="alert"><strong>{{ mensaje }}</strong> 
+        </div>
+        {% endif %}
+      </div>
 
 
     </div> <!-- /container -->
