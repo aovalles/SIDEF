@@ -43,18 +43,18 @@ def signin (request):
                 micentro = Centro.objects.filter(encargado=request.user.id)
                 
                 request.session["MiCentroId"] = micentro[0].id
-                return render_to_response("dashboard.html", contexto)
+                return render("dashboard.html", contexto)
             else:
                 contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
-                return render_to_response("signin.html", contexto)
+                return render("signin.html", contexto)
             
         else:
 
             contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
-            return render_to_response("signin.html", contexto)
+            return render("signin.html", contexto)
     else:
         contexto['form'] = LoginForm()
-        return render_to_response("signin.html", contexto)
+        return render("signin.html", contexto)
 
 
 
