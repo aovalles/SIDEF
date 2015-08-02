@@ -41,10 +41,10 @@ def signin (request):
                 micentro = Centro.objects.filter(encargado=request.user.id)
                 
                 request.session["MiCentroId"] = micentro[0].id
-                return redirect("http://sidefi.herokuapp.com/principal", contexto)
+                return redirect("http://sidefi.herokuapp.com/dashboard/", contexto)
             else:
                 contexto = Context({"mensaje": "Captcha incorrecto"})
-                return redirect("http://sidefi.herokuapp.com/", contexto)
+                return render_to_response("signin.html", contexto)
             
         else:
 
