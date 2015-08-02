@@ -18,14 +18,14 @@ def signin (request):
 
     contexto = Context({"mensaje": ""})
 
-    captcha = CaptchaForm(request.POST)
-    contexto['captcha'] = captcha  
-    #contexto.update(csrf(request))
-
-    # error_count cuenta las veces que falla la autenticacion
-    #error_count = 0
 
     if request.method == "POST":
+
+        contexto.update(csrf(request))
+
+        captcha = CaptchaForm(request.POST)
+        contexto['captcha'] = captcha  
+
         username = request.POST.get('username','')
         password = request.POST.get('password','')
 
@@ -44,7 +44,7 @@ def signin (request):
                 micentro = Centro.objects.filter(encargado=request.user.id)
                 
                 request.session["MiCentroId"] = micentro[0].id
-                return redirect("http://sidefi.herokuapp.com/dashboard/", contexto)
+                return render_to_response("dashboard.html", contexto)
             else:
                 contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
                 contexto['captcha'] = captcha
@@ -53,11 +53,10 @@ def signin (request):
         else:
 
             contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
-            contexto['captcha'] = captcha
             return render_to_response("signin.html", contexto)
     else:
 
-        # captcha = CaptchaForm()
+        captcha = CaptchaForm()
         contexto['captcha'] = captcha
         return render_to_response("signin.html", contexto)
 
