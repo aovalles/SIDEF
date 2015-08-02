@@ -44,6 +44,7 @@ def signin (request):
                 return redirect("http://sidefi.herokuapp.com/dashboard/", contexto)
             else:
                 contexto = Context({"mensaje": "Captcha incorrecto"})
+                contexto['captcha'] = captcha    
                 return render_to_response("signin.html", contexto)
             
         else:
