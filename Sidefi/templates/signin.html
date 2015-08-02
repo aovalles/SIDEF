@@ -48,7 +48,37 @@
       <form action="" method="post" class="form-signin"> {% csrf_token %}
         <h3 class="form-signin-heading">Por favor, ident&iacute;fiquese:</h3>
         <br>
-        {{ form }}
+        {% if form.non_field_errors %}
+            <p class="error">
+              {% for error in form.non_field_errors %}
+                {{ error }}
+              {% endfor %}
+            </p>
+           {% endif %}
+           <!-- Iterate over the fields in a form and render them  -->
+           {% for field in form %}
+            <div class="form-group">
+              <!-- Render the field label tag -->
+              {{ field.label_tag }}
+              <!-- If the field is required, display a * next to the field label -->
+              {% if field.field.required %}
+              *
+              {% endif %}
+              <br/>
+              <!-- Render the input field -->
+              {{ field }}
+            <!-- Iterate over the field's errors, if any and display
+                 them one by one in a error alert
+            -->
+            {% if field.errors %}
+              <p class="error">
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+              </p>
+            {% endif %}
+            </div>
+          {% endfor %}
         
         <br><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
