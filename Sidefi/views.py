@@ -20,7 +20,7 @@ def signin (request):
 
     captcha = CaptchaForm(request.POST)
     contexto['captcha'] = captcha  
-    contexto.update(csrf(request))
+    #contexto.update(csrf(request))
 
     # error_count cuenta las veces que falla la autenticacion
     #error_count = 0
