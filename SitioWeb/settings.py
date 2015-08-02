@@ -123,3 +123,9 @@ AUTH_PROFILE_MODULE = 'Sidefi.UserProfile'
 STATICFILES_DIRS = (
     chartkick.js(),
 )
+
+
+
+SESSION_COOKIE_AGE = 3600
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
