@@ -25,17 +25,17 @@ def signin (request):
         form = LoginForm(request.POST)
         # contexto['captcha'] = captcha  
 
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
+        # username = request.POST.get('username','')
+        # password = request.POST.get('password','')
 
-        #Crear un objeto user si el usuario es autenticado correctamente
-        user = auth.authenticate(username=username, password=password)
+        if form.is_valid():
+            #Crear un objeto user si el usuario es autenticado correctamente
+            user = auth.authenticate(
+                username = form.cleaned_data[nombreusuario],
+                password = form.cleaned_data[password])
 
 
-        if user is not None and user.is_active:
-
-            if captcha.is_valid():
-
+            if user is not None and user.is_active:
                 #Hacer el login
                 auth.login(request, user)
             
@@ -43,19 +43,16 @@ def signin (request):
                 micentro = Centro.objects.filter(encargado=request.user.id)
                 
                 request.session["MiCentroId"] = micentro[0].id
-                return redirect("http://sidefi.herokuapp.com/dashboard", contexto)
+                return render_to_response("dashboard.html", contexto)
             else:
                 contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
-                #contexto['captcha'] = captcha
-                return redirect("http://sidefi.herokuapp.com/")
+                return render_to_response("signin.html", contexto)
             
         else:
 
             contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
             return render_to_response("signin.html", contexto)
     else:
-
-        # captcha = CaptchaForm()
         contexto['form'] = LoginForm()
         return render_to_response("signin.html", contexto)
 
