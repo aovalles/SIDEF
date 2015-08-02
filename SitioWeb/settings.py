@@ -31,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -113,7 +114,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, "Sidefi", "templates")]
+#TEMPLATE_DIRS = [os.path.join(BASE_DIR, "Sidefi", "templates")]
+
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [os.path.join(BASE_DIR, 'Sidefi', 'templates')],
+}]
 
 #AUTH_USER_MODEL = 'Sidefi.Usuarios'
 
