@@ -17,6 +17,7 @@ import csv
 def signin (request):
 
     contexto = Context({"mensaje": ""})
+    contexto.update(csrf(request))
     
     # # Si el usuario ya esta autenticado, muestra su pagina principal
     # if request.user.is_authenticated():
@@ -44,13 +45,13 @@ def signin (request):
             
         
         else:
-            captcha = CaptchaForm()
-            contexto['captcha'] = captcha
+            # captcha = CaptchaForm()
+            # contexto['captcha'] = captcha
             return render_to_response("signin.html", contexto)
     else:
 
-        captcha = CaptchaForm()
-        contexto['captcha'] = captcha
+        # captcha = CaptchaForm()
+        # contexto['captcha'] = captcha
         return render_to_response("signin.html", contexto)
 
 
