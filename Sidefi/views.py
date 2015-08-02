@@ -1,8 +1,8 @@
 from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template.context_processors import csrf
 from django.contrib import auth
 from django.template import Context, Template
-from django.template.context_processors import csrf
 from Sidefi.forms import IngresarEstudiante, IngresarVisita, CaptchaForm
 from django.forms.models import modelformset_factory
 from django.utils.six.moves import range
@@ -21,9 +21,9 @@ def signin (request):
 
     if request.method == "POST":
 
+        captcha = CaptchaForm(request.POST)
         contexto.update(csrf(request))
 
-        captcha = CaptchaForm(request.POST)
         contexto['captcha'] = captcha  
 
         username = request.POST.get('username','')
