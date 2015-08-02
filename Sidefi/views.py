@@ -49,13 +49,12 @@ def signin (request):
             
         else:
 
-            contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo"})
+            contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
             contexto['captcha'] = captcha
             return render_to_response("signin.html", contexto)
     else:
 
         # captcha = CaptchaForm()
-        contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo"})
         contexto['captcha'] = captcha
         return render_to_response("signin.html", contexto)
 
