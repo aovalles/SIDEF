@@ -40,18 +40,17 @@ def signin (request):
             micentro = Centro.objects.filter(encargado=request.user.id)
             
             request.session["MiCentroId"] = micentro[0].id
-            return redirect("http://sidefi.herokuapp.com/")
+            return redirect("http://sidefi.herokuapp.com/dashboard")
             ## Que hacer si no tiene centro asignado
             
         
         else:
             # captcha = CaptchaForm()
-            # contexto['captcha'] = captcha
+            contexto['mensaje'] = "Ha ocurrido un error. Vuelva a intentarlo."
             return render_to_response("signin.html", contexto)
     else:
 
-        # captcha = CaptchaForm()
-        # contexto['captcha'] = captcha
+        contexto['mensaje'] = ""
         return render_to_response("signin.html", contexto)
 
 

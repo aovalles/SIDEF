@@ -46,6 +46,16 @@
 
       </form>
 
+       <div class="container">
+  
+        {% if mensaje %}
+        <div class="alert alert-danger" role="alert"><strong>{{ mensaje }}</strong> 
+        </div>
+        {% endif %}
+      </div>
+
+
+
     </div> <!-- /container -->
 
 
@@ -53,4 +63,16 @@
     <script src="{% static "js/ie10-viewport-bug-workaround.js"%}"></script>
   
 
-</body></html>
+</body>
+
+<br>
+
+<div align="center">
+      <!-- FOOTER -->
+      <footer>
+        <p>© 2015 Alexander Ovalles / David Freijomil / Pelagio Soriano <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+      </footer>
+</div>
+
+
+</html>
