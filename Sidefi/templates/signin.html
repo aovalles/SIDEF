@@ -23,77 +23,28 @@
   </head>
 
   <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-
-              <a class="navbar-brand" href="http://sidefi.herokuapp.com/">SIDEFI</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse"></div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-
-  <body>
 
     <div class="container">
 
-      <form action="" method="post" class="form-signin">{% csrf_token %}
-        <h3 class="form-signin-heading">Por favor, ident&iacute;fiquese:</h3>
+      <form action="" method="post" class="form-signin"> {% csrf_token %}
+        <h3 class="form-signin-heading">Por favor, identifiquese:</h3>
         <br>
-        {% if form.non_field_errors %}
-            <p class="error">
-              {% for error in form.non_field_errors %}
-                {{ error }}
-              {% endfor %}
-            </p>
-           {% endif %}
-           <!-- Iterate over the fields in a form and render them  -->
-           {% for field in form %}
-            <div class="form-group">
-              <!-- Render the field label tag -->
-              {{ field.label_tag }}
-              <!-- If the field is required, display a * next to the field label -->
-              {% if field.field.required %}
-              *
-              {% endif %}
-              <br/>
-              <!-- Render the input field -->
-              {{ field }}
-            <!-- Iterate over the field's errors, if any and display
-                 them one by one in a error alert
-            -->
-            {% if field.errors %}
-              <p class="error">
-              {% for error in field.errors %}
-                {{ error }}
-              {% endfor %}
-              </p>
-            {% endif %}
-            </div>
-          {% endfor %}
+        <label for="username" class="sr-only">Nombre de usuario</label>
+
+        <input type="text" name="username" id="username" value="" class="form-control" placeholder="nombre de usuario" required="" autofocus="">
+        <br>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
         
-        <br><br>
+        {{ captcha }}
+        
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 
-        <br>      
+        <br>
+
+        <p>{{ mensaje }}<p>
 
       </form>
-
-      <div class="container">
-  
-
-        {% if mensaje %}
-        <div class="alert alert-danger" role="alert"><strong>{{ mensaje }}</strong> 
-        </div>
-        {% endif %}
-      </div>
-
 
     </div> <!-- /container -->
 
@@ -102,13 +53,4 @@
     <script src="{% static "js/ie10-viewport-bug-workaround.js"%}"></script>
   
 
-</body>
-<br>
-
-<div align="center">
-      <!-- FOOTER -->
-      <footer>
-        <p>© 2015 Alexander Ovalles / David Freijomil / Pelagio Soriano <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-      </footer>
-</div>
-</html>
+</body></html>
