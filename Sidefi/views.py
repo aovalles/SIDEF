@@ -54,7 +54,7 @@ def signin (request):
             return render("signin.html", contexto)
     else:
         contexto['form'] = LoginForm()
-        return render("signin.html", contexto)
+        return render_to_response("signin.html", contexto)
 
 
 
