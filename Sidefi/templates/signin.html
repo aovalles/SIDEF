@@ -55,7 +55,6 @@
         <label for="password" class="sr-only">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
         
-        {{ captcha }}
         <br><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 
@@ -64,6 +63,7 @@
       </form>
 
       <div class="container">
+        {{ captcha }}
 
         {% if mensaje %}
         <div class="alert alert-danger" role="alert"><strong>{{ mensaje }}</strong> 
