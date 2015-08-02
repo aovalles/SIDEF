@@ -21,9 +21,8 @@ def signin (request):
 
     if request.method == "POST":
 
-        captcha = CaptchaForm(request.POST)
         contexto.update(csrf(request))
-
+        captcha = CaptchaForm(request.POST)
         contexto['captcha'] = captcha  
 
         username = request.POST.get('username','')
@@ -47,7 +46,7 @@ def signin (request):
                 return render_to_response("dashboard.html", contexto)
             else:
                 contexto = Context({"mensaje": "Ha ocurrido un error. Vuelva a intentarlo."})
-                contexto['captcha'] = captcha
+                #contexto['captcha'] = captcha
                 return render_to_response("signin.html", contexto)
             
         else:
