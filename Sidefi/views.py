@@ -16,14 +16,14 @@ import csv
 
 def signin (request):
 
-    contexto = Context({"mensaje": ""})
-
+    contexto = Context({"mensaje": "hola, mundo!"})
+    # form = LoginForm(request.POST)
 
     if request.method == "POST":
 
         contexto.update(csrf(request))
-        captcha = CaptchaForm(request.POST)
-        contexto['captcha'] = captcha  
+        form = LoginForm(request.POST)
+        # contexto['captcha'] = captcha  
 
         username = request.POST.get('username','')
         password = request.POST.get('password','')
@@ -55,8 +55,8 @@ def signin (request):
             return render_to_response("signin.html", contexto)
     else:
 
-        captcha = CaptchaForm()
-        contexto['captcha'] = captcha
+        # captcha = CaptchaForm()
+        contexto['form'] = form
         return render_to_response("signin.html", contexto)
 
 

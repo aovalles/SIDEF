@@ -3,16 +3,14 @@ from Sidefi.models import Individuo, Visita
 from captcha.fields import CaptchaField
 
 
-class CaptchaForm(forms.Form):
+
+class LoginForm(forms.Form):
+
+	nombreusuario = forms.CharField(max_length = 50)
+	password = forms.CharField(max_length = 20,
+		widget = forms.TextInput(attrs = {'type' : ' password'}))
     captcha = CaptchaField()
-
-
-# class LoginForm(forms.Form):
-
-# 	nombreusuario = forms.CharField(max_length = 50)
-# 	password = forms.CharField(max_length = 20,
-# 		widget = forms.TextInput(attrs = {'type' : ' password'}))
-
+  
 
 class IngresarEstudiante(forms.ModelForm):
 
