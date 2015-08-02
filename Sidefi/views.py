@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.context_processors import csrf
 from django.contrib import auth
 from django.template import Context, Template
-from Sidefi.forms import IngresarEstudiante, IngresarVisita, CaptchaForm
+from Sidefi.forms import IngresarEstudiante, IngresarVisita, LoginForm
 from django.forms.models import modelformset_factory
 from django.utils.six.moves import range
 from django.http import StreamingHttpResponse
