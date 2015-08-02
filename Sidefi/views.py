@@ -56,7 +56,7 @@ def signin (request):
     else:
 
         # captcha = CaptchaForm()
-        contexto['form'] = form
+        contexto['form'] = LoginForm()
         return render_to_response("signin.html", contexto)
 
 
