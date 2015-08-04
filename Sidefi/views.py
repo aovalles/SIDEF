@@ -475,17 +475,24 @@ def IngresoVisita(request, identificador):
         altura = (Altura.objects.filter(edad = meses, genero=sexo)).values()[0]
     except:
         altura = [0,0,0,0,0,0,0]
+        contexto["mensaje"] = "Edad fuera de rango o " + \
+        "no fue posible obtener todos los datos de la altura para esta edad."
 
     try:
         peso = Peso.objects.filter(edad = meses, genero=sexo).values()[0]
     except:
         peso = [0,0,0,0,0,0,0]
+        contexto["mensaje"] = "Edad fuera de rango o " + \
+        "no fue posible obtener todos los datos del peso para esta edad."
 
     try:
         imc = IMC.objects.filter(edad = meses, genero=sexo).values()[0]
     except:
-        ims = [0,0,0,0,0,0,0]
+        imc = [0,0,0,0,0,0,0]
+        contexto["mensaje"] = "Edad fuera de rango o " + \
+        "no fue posible obtener el IMC para esta edad."
 
+    try:
         #Altura
         formDict["a1"] = str(altura["dem3"])
         formDict["a2"] = str(altura["dem2"])
@@ -545,7 +552,7 @@ def IngresoVisita(request, identificador):
 
     except:
         contexto["mensaje"] = "Edad fuera de rango o " + \
-        "no fue posible obtener los datos antropometricos para esta edad."
+        "no fue posible obtener todos los datos antropometricos para esta edad."
 
 
     if request.method == "POST":
