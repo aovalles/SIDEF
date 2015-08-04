@@ -69,64 +69,6 @@ def principal(request):
 
 
 #===============================================================================================
-
-
-def signin2 (request):
-
-    contexto = Context({"mensaje": ""})
-    contexto.update(csrf(request))
-    
-    # Si el usuario ya esta autenticado, muestra su pagina principal
-    if request.user.is_authenticated():
-        return redirect("http://sidefi.herokuapp.com/")
-
-    if request.method == "POST":
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
-
-        #Crear un objeto user si el usuario es autenticado correctamente
-    
-        user = auth.authenticate(username=username, password=password)
-
-    
-        #Comprobar la autenticacion y que el usuario esta activo para proceder
-        #a conceder el acceso
-
-        if user is not None and user.is_active:
-
-            #Hacer el login
-            auth.login(request, user)
-        
-            # Guardar la escuela asignada al usuario
-            micentro = Centro.objects.filter(encargado=request.user.id)
-            
-            request.session["MiCentroId"] = micentro[0].id
-            return redirect("http://sidefi.herokuapp.com/")
-            ## Que hacer si no tiene centro asignado
-            
-        
-        else:
-
-            return render_to_response("signin.html", contexto)
-        
-    return render(request, "signin.html")
-
-
-
-def logout (request):
-    auth.logout(request)
-    return HttpResponseRedirect("/")
-
-
-
-
-def principal(request):
-    return render(request, "principal.html")
-
-
-
-
-#===============================================================================================
 # Vista Dashboard
 #===============================================================================================
 
@@ -436,18 +378,6 @@ def vistaMediciones(request):
                     'edad_medicion':edad_medicion,
 
                         })
-
-
-    # datos =[]
-    # for v in Visita.objects.select_related():
-
-    #     datos.append({'nombre': v.individuo.nombre,
-    #                     'genero' : v.individuo.genero,
-    #                     'fecha_nac' : v.individuo.fecha_nac,
-    #                     'fecha_visita' : v.creada,
-    #                     'id' : v.individuo.id,
-    #                     'edad_medicion' : v.edad,
-    #                     })
     
         
     contexto["poblaciontotal"] = len(datos1) #misestudiantes.count()
@@ -543,8 +473,18 @@ def IngresoVisita(request, identificador):
 
     try:
         altura = (Altura.objects.filter(edad = meses, genero=sexo)).values()[0]
+    except:
+        altura = [0,0,0,0,0,0,0]
+
+    try:
         peso = Peso.objects.filter(edad = meses, genero=sexo).values()[0]
+    except:
+        peso = [0,0,0,0,0,0,0]
+
+    try:
         imc = IMC.objects.filter(edad = meses, genero=sexo).values()[0]
+    except:
+        ims = [0,0,0,0,0,0,0]
 
         #Altura
         formDict["a1"] = str(altura["dem3"])
