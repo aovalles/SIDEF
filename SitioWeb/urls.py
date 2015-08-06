@@ -40,6 +40,8 @@ urlpatterns = [
     url (r'^export_m/$', 'Sidefi.views.exportar_visitas'), 
 
     url(r'^charts/$', 'Sidefi.views.charts', name='charts'),
+
+    url(r'^histograma/$', 'Sidefi.views.histograma', name='charts'),
     
 ]
 
