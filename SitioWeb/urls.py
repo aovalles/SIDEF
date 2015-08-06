@@ -41,7 +41,7 @@ urlpatterns = [
 
     url(r'^charts/$', 'Sidefi.views.charts', name='charts'),
 
-    url(r'^histograma/$', 'Sidefi.views.histograma', name='charts'),
+
     
 ]
 
