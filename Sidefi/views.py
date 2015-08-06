@@ -944,7 +944,7 @@ def charts(request):
     * Setting the opacity (alpha value).
 
 """
-def histograma():
+def histograma(request):
 
     import numpy as np
     import matplotlib.mlab as mlab
