@@ -62,6 +62,8 @@ def logout (request):
 def principal(request):
     return render(request, "principal.html")
 
+def ayuda(request):
+    return render(request, "ayuda.html")
 
 
 
