@@ -47,8 +47,11 @@ def signin (request):
             return render_to_response("signin.html", contexto)
     else:
 
-        contexto['mensaje'] = ""
-        return render_to_response("signin.html", contexto)
+        if request.user.is_authenticated():
+            return redirect("http://sidefi.herokuapp.com/dashboard")
+        else:
+            contexto['mensaje'] = ""
+            return render_to_response("signin.html", contexto)
 
 
 
