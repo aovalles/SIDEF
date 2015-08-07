@@ -63,7 +63,13 @@ def principal(request):
     return render(request, "principal.html")
 
 def ayuda(request):
-    return render(request, "ayuda.html")
+
+    contexto = Context(
+                {"usuario":request.user.username,
+                "nombre":request.user.first_name+" " +request.user.last_name,
+                })
+
+    return render(request, "ayuda.html", contexto)
 
 
 
