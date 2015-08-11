@@ -198,10 +198,10 @@ El control de salud consta de una entrevista y de un examen físico, realizado p
       <td>Peso</td>
       <td>{{datos.zpeso}}</td>
           <td>
-            {% if datos.zpeso <= datos.i3 %}
+            {% if datos.zpeso = -2 %}
               Riesgo de desnutricion
-            {% if datos.zpeso >= datos.i5 %}
-              Riesgo de sobrepeso
+            {% elif datos.zpeso = -3 %}
+              Desnutrido
             {% else %}
               Normal
             {% endif %}
