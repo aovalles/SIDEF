@@ -185,16 +185,27 @@
 
           </tbody>
         </table>
+<br>
+<div class="alert alert-warning" role="alert">
+        <strong>Advertencia: </strong> 
+El control de salud consta de una entrevista y de un examen físico, realizado por profesionales con experiencia en atención de ninos y adolescentes. Los siguientes datos muestran la valoracion de las medidas antropometricas de acuerdo a la tabla de la OMS utilizada como estandar para el desarrollo de individuos sanos en condiciones favorables. Este control no constituye un diagnostico pero quedará registrado como un instrumento de seguimiento del desarrollo fisico del estudiante y queda como parte de la ficha clínica que se encuentra en la escuela. En caso de que se presente algún problema de salud, se entregará toda la información necesaria y las indicaciones para la referencia al centro de salud donde el estudiante y su familia se encuentran registrados.
 
-
-
-
+</div>
+<br>
   <table id="zscore">
     <tr><th>Medida</th><th>Z-Score</th><th>Valoraci&oacute;n</th></tr>
     <tr>
       <td>Peso</td>
       <td>{{datos.zpeso}}</td>
-      <td>{{datos.zpeso}}</td>
+          <td>
+            {% if datos.zpeso <= datos.i3 %}
+              Riesgo de desnutricion
+            {% if datos.zpeso >= datos.i5 %}
+              Riesgo de sobrepeso
+            {% else %}
+              Normal
+            {% endif %}
+          </td>
     </tr>
     <tr>
       <td>Altura</td>
@@ -203,8 +214,12 @@
     </tr>
     <tr>
       <td>IMC</td>
-      <td>{{datos.zimc}}</td>
-      <td>{{datos.zimc}}</td>
+        <td>
+        {{datos.zimc}}
+        </td>
+        <td>
+        {{datos.zimc}}
+        </td>
     </tr>
 
   </table>
