@@ -48,12 +48,12 @@
         <br>
         <label for="username" class="sr-only">Nombre de usuario</label>
 
-        <input type="text" name="username" id="username" value="" class="form-control" placeholder="nombre de usuario" required="" autofocus="">
+        <input type="text" name="username" id="username" value="" class="form-control" placeholder="nombre de usuario" required="required" autofocus="" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
         
         <br>
         <label for="password" class="sr-only">Password</label>
         
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 
@@ -89,5 +89,18 @@
       </footer>
 </div>
 
-
+<script type="text/javascript">
+  
+  function InvalidMsg(textbox) {
+    
+    if (textbox.value == '') {
+        textbox.setCustomValidity('Por favor complete este campo');
+    }
+    else if(textbox.validity.typeMismatch){
+        textbox.setCustomValidity('Por favor introduzca el dato correcto');
+    }
+    else {
+        textbox.setCustomValidity('');
+   
+</script>
 </html>
