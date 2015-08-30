@@ -43,8 +43,15 @@
         {% column_chart peso with library={"title":"Poblacion"}%}
     </div>
 
+<br>
 
-
+    <script>
+        document.write("<input type='button' " +
+       "onClick='window.print()' " +
+       "class='printbutton' " +
+       "style='height:30px; width:150px' " +
+       "value='Imprimir'/>");
+    </script>    
       
 
 {% endblock contenido %}
