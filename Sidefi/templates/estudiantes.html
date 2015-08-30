@@ -9,7 +9,7 @@
 
 <br>
 
-<h4 class="page-header">Tabla de Estudiantes</h4>
+<h4 class="page-header">Estudiantes</h4>
 
 <div style="color:red" style="font-size:160%">{{ mensaje }}</div>
 
@@ -33,13 +33,23 @@
             style="height:30px; width:150px"/>
           </a>
 
-          
+          <br>
+          <br>
           <a href='/export_e/'><input type="Button"
             id="mybutton"
             name="url button"
             value="Exportar"  
             style="height:30px; width:150px"/>
           </a>
+
+          <script>
+            document.write("<input type='button' " +
+            "onClick='window.print()' " +
+            "class='printbutton' " +
+            "style='height:30px; width:150px' " +
+            "value='Imprimir'/>");
+          </script>
+
           
           
   <!-- demo ==============================================================-->
