@@ -931,10 +931,9 @@ def charts(request):
                 l[6][1] += 1
             
 
+    #print l
        
-    print l
-       
-    #contexto["poblacion"] = poblacion
+    contexto["poblacion"] = poblacion
 
     contexto["peso"] = l
 

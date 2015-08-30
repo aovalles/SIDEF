@@ -27,20 +27,24 @@
 
 {% endif %}
 
-        
+    <div class="alert alert-success" role="alert">
+        <strong><h4>Poblacion</h4></strong>
+        {% pie_chart poblacion with library={"title":"Poblacion"}%}
+    </div>
+    
     <div class="alert alert-success" role="alert">
         <strong><h4>Talla</h4></strong>
-        {% column_chart peso with library={"title":"Poblacion"}%}
+        {% column_chart peso with library={"title":"Talla"}%}
     </div>
 
     <div class="alert alert-success" role="alert">
         <strong><h4>Peso</h4></strong>
-        {% column_chart peso with library={"title":"Poblacion"}%}
+        {% column_chart peso with library={"title":"Peso"}%}
     </div>
         
     <div class="alert alert-success" role="alert">
         <strong><h4>Indice de Masa Corporal</h4></strong>
-        {% column_chart peso with library={"title":"Poblacion"}%}
+        {% column_chart peso with library={"title":"IMC"}%}
     </div>
 
 <br>
