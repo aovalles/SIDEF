@@ -959,17 +959,17 @@ def charts(request):
             
             if valori == -3:
                 i[0][1] += 1
-            if valor1 == -2:
+            if valori == -2:
                 i[1][1] += 1
-            if valor1 == -1:
+            if valori == -1:
                 i[2][1] += 1
-            if valor1 == 0:
+            if valori == 0:
                 i[3][1] += 1
-            if valor1 == 1:
+            if valori == 1:
                 i[4][1] += 1
-            if valor1 == 2:
+            if valori == 2:
                 i[5][1] += 1
-            if valor1 == 3:
+            if valori == 3:
                 i[6][1] += 1
             
 
