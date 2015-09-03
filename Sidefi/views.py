@@ -892,50 +892,91 @@ def charts(request):
     estudiantes = Individuo.objects.filter(centro=request.session["MiCentroId"],
         activo="S")
 
+
     # ============== Poblacion estudiantil ===============
     poblacion={}
 
     for e in estudiantes:
         poblacion[e.genero] = poblacion.get(e.genero,0)+1
         
+    contexto["poblacion"] = poblacion
 
 
-    # ============== Peso para la edad ===================
+
+    # ============== Datos de las visitas ===================
 
     estudiantes = estudiantes.select_related()
 
     fecha_ref = Parametros.objects.get(estatus="I").fecha_ref
 
-    l = [["-3DE", 0],["-2DE", 0],["-1DE", 0],["N", 0],["+1DE", 0],["+2DE", 0],["+3DE", 0]]
     
+
+    # ============== Peso, talla, IMC ===================
+
+    p = [["-3DE", 0],["-2DE", 0],["-1DE", 0],["N", 0],["+1DE", 0],["+2DE", 0],["+3DE", 0]]
+    t = [["-3DE", 0],["-2DE", 0],["-1DE", 0],["N", 0],["+1DE", 0],["+2DE", 0],["+3DE", 0]]
+    i = [["-3DE", 0],["-2DE", 0],["-1DE", 0],["N", 0],["+1DE", 0],["+2DE", 0],["+3DE", 0]]
 
     for e in estudiantes:
         v = e.visita_set.filter(individuo = e.id, creada__gte = fecha_ref)
 
         if len(v) == 1:  #Tiene una visita registrada
-            valor = v.values("pesoReferencia")[0]["pesoReferencia"]
+            valorp = v.values("pesoReferencia")[0]["pesoReferencia"]
+            valort = v.values("tallaReferencia")[0]["imcReferencia"]
+            valori = v.values("imcReferencia")[0]["imcReferencia"]
             
-            if valor == -3:
-                l[0][1] += 1
-            if valor == -2:
-                l[1][1] += 1
-            if valor == -1:
-                l[2][1] += 1
-            if valor == 0:
-                l[3][1] += 1
-            if valor == 1:
-                l[4][1] += 1
-            if valor == 2:
-                l[5][1] += 1
-            if valor == 3:
-                l[6][1] += 1
+            if valorp == -3:
+                p[0][1] += 1
+            if valorp == -2:
+                p[1][1] += 1
+            if valorp == -1:
+                p[2][1] += 1
+            if valorp == 0:
+                p[3][1] += 1
+            if valorp == 1:
+                p[4][1] += 1
+            if valorp == 2:
+                p[5][1] += 1
+            if valorp == 3:
+                p[6][1] += 1
+            
+            
+            if valort == -3:
+                t[0][1] += 1
+            if valort == -2:
+                t[1][1] += 1
+            if valort == -1:
+                t[2][1] += 1
+            if valort == 0:
+                t[3][1] += 1
+            if valort == 1:
+                t[4][1] += 1
+            if valort == 2:
+                t[5][1] += 1
+            if valort == 3:
+                t[6][1] += 1
+            
+            
+            if valori == -3:
+                i[0][1] += 1
+            if valor1 == -2:
+                i[1][1] += 1
+            if valor1 == -1:
+                i[2][1] += 1
+            if valor1 == 0:
+                i[3][1] += 1
+            if valor1 == 1:
+                i[4][1] += 1
+            if valor1 == 2:
+                i[5][1] += 1
+            if valor1 == 3:
+                i[6][1] += 1
             
 
-    #print l
-       
-    contexto["poblacion"] = poblacion
+    contexto["peso"] = p
+    contexto["talla"] = t
+    contexto["imc"] = i
 
-    contexto["peso"] = l
 
 
     return render(request, 'charts.html', contexto)
