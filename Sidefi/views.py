@@ -922,7 +922,7 @@ def charts(request):
 
         if len(v) == 1:  #Tiene una visita registrada
             valorp = v.values("pesoReferencia")[0]["pesoReferencia"]
-            valort = v.values("tallaReferencia")[0]["imcReferencia"]
+            valort = v.values("alturaReferencia")[0]["alturaReferencia"]
             valori = v.values("imcReferencia")[0]["imcReferencia"]
             
             if valorp == -3:
