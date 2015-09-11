@@ -1,7 +1,7 @@
 from django import forms
 from Sidefi.models import Individuo, Visita
-from captcha.fields import CaptchaField
-
+#from captcha.fields import CaptchaField
+from django.contrib.auth.tokens import default_token_generator
 
 
 class LoginForm(forms.Form):
@@ -98,5 +98,5 @@ class PassworResetForm(forms.Form):
             subject = loader.render_to_string(subject_template_name, c)
             # Email subject *must not* contain newlines
             subject = ''.join(subject.splitlines())
-            email = loader.render_to_string(email_template_name, c)
+            email = loader.render_to_string(password_reset.html, c)
             send_mail(subject, email, from_email, [user.email])
