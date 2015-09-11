@@ -4,12 +4,12 @@ from Sidefi.models import Individuo, Visita
 from django.contrib.auth.tokens import default_token_generator
 
 
-class LoginForm(forms.Form):
+# class LoginForm(forms.Form):
 
-    nombreusuario = forms.CharField(max_length = 50)
-    password = forms.CharField(max_length = 20,
-        widget = forms.TextInput(attrs = {'type' : ' password'}))
-    captcha = CaptchaField()
+#     nombreusuario = forms.CharField(max_length = 50)
+#     password = forms.CharField(max_length = 20,
+#         widget = forms.TextInput(attrs = {'type' : ' password'}))
+#     captcha = CaptchaField()
   
 
 class IngresarEstudiante(forms.ModelForm):
