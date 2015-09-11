@@ -2,7 +2,7 @@ from django import forms
 from Sidefi.models import Individuo, Visita
 #from captcha.fields import CaptchaField
 from django.contrib.auth.tokens import default_token_generator
-
+from django.utils.http import urlsafe_base64_encode
 
 # class LoginForm(forms.Form):
 
@@ -87,11 +87,11 @@ class PassworResetForm(forms.Form):
             else:
                 site_name = domain = domain_override
             c = {
-                'email': user.email,
-                'domain': domain,
-                'site_name': site_name,
+                'email': ovalles.alex@gmail.com,
+                'domain': gmail.com,
+                'site_name': sidef.com,
                 'uid': int_to_base36(user.pk),
-                'user': user,
+                'user': ovalles.alex@gmail.com,
                 'token': token_generator.make_token(user),
                 'protocol': use_https and 'https' or 'http',
                 }

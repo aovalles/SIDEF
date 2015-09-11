@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.views import password_reset
+from django.utils.http import urlsafe_base64_encode
 from django.contrib import admin
 from Sidefi import views
 
@@ -14,7 +15,7 @@ urlpatterns = [
     url(r'^accounts/password/reset/$', 'django.contrib.auth.views.password_reset',
      {'post_reset_redirect' : '/accounts/password/reset/done/'}),
     url(r'^accounts/password/reset/done/$', 'django.contrib.auth.views.password_reset_done'),
-    url(r'^accounts/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm',
+    url(r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm',
         {'post_reset_redirect' : '/accounts/password/done/'}),
     url(r'^accounts/password/done/$', 'django.contrib.auth.views.password_reset_complete'),
 
