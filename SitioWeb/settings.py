@@ -137,3 +137,4 @@ EMAIL_HOST_USER = 'ovalles.alex@gmail.com'
 EMAIL_HOST_PASSWORD = 'Mileva1973+'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'ovalles.alex@gmail.com'
