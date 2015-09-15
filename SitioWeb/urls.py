@@ -12,7 +12,7 @@ urlpatterns = [
     # url(r'^$', 'SitioWeb.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^accounts/login', 'Sidefi.views.signin', name="signin"), 
+    #url(r'^accounts/login', 'Sidefi.views.signin', name="signin"), 
 
     url(r'^accounts/', include('django.contrib.auth.urls')),
 
